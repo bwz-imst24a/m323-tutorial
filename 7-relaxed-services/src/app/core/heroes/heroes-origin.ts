@@ -10,7 +10,7 @@ import { Hero } from '../resources/dto/hero';
       <h4>Original Data</h4>
       <ul class="origin-list">
         @for (hero of heroes(); track hero.id) {
-          <li>{{hero.name}}</li>
+          <li>{{hero.name}} - {{hero.strength}}</li>
         }
       </ul>
     </section>

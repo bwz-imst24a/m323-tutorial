@@ -10,7 +10,7 @@ import { HeroStore } from './hero-store';
     <ul class="heroes">
       @for (hero of heroStore.heroes(); track hero.id) {
         <li>
-          <button type="button" [routerLink]="['/detail', hero.id ]">
+          <button type="button" title="{{ hero.strength }}" [routerLink]="['/detail', hero.id ]">
             <span class="badge">{{hero.id}}</span>
             <span class="name">{{hero.name}}</span>
           </button>
@@ -21,11 +21,13 @@ import { HeroStore } from './hero-store';
     <div>
       <h2>Create a Hero</h2>
       <label for="new-hero">Name: </label>
-      <input id="new-hero" #heroName />
+      <input id="new-hero" #heroName />&nbsp;
+      <label for="new-strength">Strength: </label>
+      <input id="new-strength" #heroStrength />
       
       <div>
         <!-- (click) passes input value to add() and then clears the input -->
-        <button type="button" (click)="add(heroName.value); heroName.value=''">Add hero</button>
+        <button type="button" (click)="add(heroName.value, heroStrength.value); heroName.value=''; heroStrength.value='';">Add hero</button>
       </div>
     </div>
   `,
@@ -98,10 +100,10 @@ export class Heroes implements OnInit {
   ngOnInit() {
     this.heroStore.load();
   }
-  add(name: string): void {
+  add(name: string, strength: string): void {
     name = name.trim();
     if (!name) { return; }
-    this.heroStore.add(name);
+    this.heroStore.add(name, strength);
   }
   remove(id: number): void {
     this.heroStore.remove(id);

@@ -12,7 +12,7 @@ export class HeroStore {
 
   public load() {
     getHeroes().subscribe(heroes => {
-      this.messageHandler.add('HeroStore: fetched heroes');
+      this.messageHandler.add(`HeroStore: fetched ${heroes.length} heroes`);
       this.heroes.set(heroes);
     });
   }

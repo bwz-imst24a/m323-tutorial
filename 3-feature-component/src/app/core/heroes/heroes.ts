@@ -11,7 +11,7 @@ import { HeroDetail } from "./hero-detail";
     <ul class="heroes">
       @for (hero of heroes; track hero.id) {
         <li [class.selected]="hero === selectedHero()">
-          <button type="button" (click)="onSelect(hero)">
+          <button type="button" title="{{ hero.strength }}" (click)="onSelect(hero)">
             <span class="badge">{{hero.id}}</span>
             <span class="name">{{hero.name}}</span>
           </button>

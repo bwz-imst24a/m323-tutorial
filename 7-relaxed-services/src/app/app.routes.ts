@@ -7,5 +7,6 @@ export const routes: Routes = [
     { path: 'heroes', component: Heroes },
     { path: 'dashboard', component: Dashboard },
     { path: 'detail/:id', component: HeroDetail },
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+    { path: '**', redirectTo: '/dashboard' }
 ];

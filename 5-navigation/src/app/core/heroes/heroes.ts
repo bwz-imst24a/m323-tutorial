@@ -10,7 +10,7 @@ import { HeroStore } from './hero-store';
     <ul class="heroes">
       @for (hero of heroStore.heroes(); track hero.id) {
         <li>
-          <button type="button" [routerLink]="['/detail', hero.id ]">
+          <button type="button" title="{{ hero.strength }}" [routerLink]="['/detail', hero.id ]">
             <span class="badge">{{hero.id}}</span>
             <span class="name">{{hero.name}}</span>
           </button>

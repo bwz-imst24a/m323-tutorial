@@ -13,12 +13,14 @@ import { Hero } from './hero';
       <label for="name">Hero name: </label>
       <input id="name" [(ngModel)]="hero.name" placeholder="name">
     </div>
+    <div><span>Strength: </span>{{hero.strength}}</div>
   `,
   styles: ``
 })
 export class Heroes {
   protected readonly hero: Hero = {
     id: 1,
-    name: 'Windstorm'
+    name: 'Windstorm',
+    strength: 'Wind manipulation',
   };
 }

@@ -14,11 +14,15 @@ import { MessageHandler } from '../messaging/message-handler';
         <h2>{{hero()!.name | uppercase}} Details</h2>
         <div>id: {{hero()!.id}}</div>
         <div>
-          <label for="hero-name">Hero name: </label>
+          <label class="hero-label" for="hero-name">Hero name: </label>
           <input #name="ngModel" id="hero-name" required placeholder="name" [(ngModel)]="hero()!.name" name="name">
           <span [hidden]="name.valid || name.pristine" class="validation-error">
             * Name is required
           </span>
+        </div>
+        <div>
+          <label for="hero-strength">Strength: </label>
+          <input #strength="ngModel" id="hero-strength" placeholder="strength" [(ngModel)]="hero()!.strength" name="strength">
         </div>
         <div>
           <label for="hero-alter-ego">Alter ego: </label>
@@ -57,6 +61,11 @@ import { MessageHandler } from '../messaging/message-handler';
       font-size: small;
       padding: 4px;
       margin: 4px;
+    }
+
+    .hero-label {
+      color: #405061;
+      font-weight: bold;
     }
   `
 })

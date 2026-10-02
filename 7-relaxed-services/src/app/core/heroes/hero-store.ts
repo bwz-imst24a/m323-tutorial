@@ -13,7 +13,7 @@ export class HeroStore {
 
   public load() {
     this.resource.getHeroes().subscribe(heroes => {
-      this.messageHandler.add('HeroStore: fetched heroes');
+      this.messageHandler.add(`HeroStore: fetched ${heroes.length} heroes`);
       this.heroes.set(heroes);
     });
   }
@@ -22,8 +22,8 @@ export class HeroStore {
       this.messageHandler.add(`HeroStore: updated hero id=${hero.id}`);
     });
   }
-  add(name: string) {
-    this.resource.post( { name } ).subscribe((hero) => {
+  add(name: string, strength: string) {
+    this.resource.post( { name, strength: strength } ).subscribe((hero) => {
       if (hero) {
         this.heroes.set( [ ...this.heroes(), hero ] );
         this.messageHandler.add(`HeroStore: added hero id=${hero.id}`);

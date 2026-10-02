@@ -12,7 +12,7 @@ import { MessageHandler } from '../messaging/message-handler';
     <ul class="heroes">
       @for (hero of heroStore.heroes(); track hero.id) {
         <li [class.selected]="hero === selectedHero()">
-          <button type="button" (click)="onSelect(hero)">
+          <button type="button" title="{{ hero.strength }}" (click)="onSelect(hero)">
             <span class="badge">{{hero.id}}</span>
             <span class="name">{{hero.name}}</span>
           </button>
@@ -100,7 +100,7 @@ export class Heroes implements OnInit {
   
   protected onSelect(hero: Hero): void {
     this.selectedHero.set(hero);
-    this.messageHandler.add(`Heroes component: Selected hero id=${hero.id}`);
+    this.messageHandler.add(`Heroes component: Hero ${hero.id} selected`);
   }
   ngOnInit() {
     this.heroStore.load();

@@ -13,14 +13,25 @@ import { MessageHandler } from '../messaging/message-handler';
     <h2>{{hero()!.name | uppercase}} Details</h2>
     <div>id: {{hero()!.id}}</div>
     <div>
-      <label for="hero-name">Hero name: </label>
+      <label class="hero-label" for="hero-name">Hero name: </label>
       <input id="hero-name" [(ngModel)]="hero()!.name" placeholder="name">
     </div>
+    @if (hero()!.strength !== '') {
+      <div><span>Strength: </span>{{hero()!.strength}}</div>
+    }
+    @else {
+      <div><span>Strength: </span><i>unknown</i></div>
+    }
   </div>
   <button type="button" (click)="save()">Save</button>
 }
   `,
-  styles: ` `
+  styles: `
+    .hero-label {
+      color: #405061;
+      font-weight: bold;
+    }
+  `
 })
 export class HeroDetail implements OnInit {
   public readonly id = input<string>();

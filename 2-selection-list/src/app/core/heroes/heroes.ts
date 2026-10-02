@@ -12,7 +12,7 @@ import { HEROES } from './mock-heroes';
     <ul class="heroes">
       @for (hero of heroes; track hero.id) {
         <li [class.selected]="hero === selectedHero()">
-          <button type="button" (click)="onSelect(hero)">
+          <button type="button" title="{{ hero.strength }}" (click)="onSelect(hero)">
             <span class="badge">{{hero.id}}</span>
             <span class="name">{{hero.name}}</span>
           </button>
@@ -24,9 +24,10 @@ import { HEROES } from './mock-heroes';
         <h2>{{selectedHero()!.name | uppercase}} Details</h2>
         <div>id: {{selectedHero()!.id}}</div>
         <div>
-          <label for="hero-name">Hero name: </label>
+          <label class="hero-label" for="hero-name">Hero name: </label>
           <input id="hero-name" [(ngModel)]="selectedHero()!.name" placeholder="name">
         </div>
+        <div><span>Strength: </span>{{selectedHero()!.strength}}</div>
       </div>
     }
   `,
@@ -97,6 +98,11 @@ import { HEROES } from './mock-heroes';
         background-color: black;
         color: white;
       }
+    }
+
+    .hero-label {
+      color: #405061;
+      font-weight: bold;
     }
   `
 })
